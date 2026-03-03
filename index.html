@@ -3,19 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日新闻速递</title>
+    <title>每日新闻速递 - 2026年3月3日</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
-        h1 { color: #FF6B35; text-align: center; }
-        .news-card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        .header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .category-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        .tag-ai { background: #e3f2fd; color: #1976d2; }
+        .tag-tech { background: #f3e5f5; color: #7b1fa2; }
+        .tag-business { background: #e8f5e9; color: #388e3c; }
+        .tag-culture { background: #fff3e0; color: #f57c00; }
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .news-summary {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
-    <h1>📰 每日新闻速递</h1>
-    <p>网站正在建设中...</p>
-    <div class="news-card">
-        <h3>示例新闻标题</h3>
-        <p>新闻内容...</p>
-    </div>
-</body>
-</html>
+    <div class="container">
+        <div class="header">
+            <h1>📰 每日新闻速递</h1>
+            <p>AI · 科技 · 电商 · 文创 · 文旅</p>
+            <p>2026年3月3日</p>
+        </div>
+        
+        <div class="news-grid">
+            <!-- AI新闻 -->
+            <div class="news-card">
+                <span class="category-tag tag-ai">人工智能</span>
+                <h3 class="news-title">【OpenAI】GPT-5即将发布，多模态能力大幅提升</h3>
+                <p class="news-summary">OpenAI宣布GPT-5将于本月发布，新模型在图像理解、视频生成、代码编写等方面有显著突破。</p>
+            </div>
+            
+            <div class="news-card">
+                <span class="category-tag tag-ai">AI应用</span>
+                <h3 class="news-title">【百度】文心一言用户突破2亿</h3>
+                <p class="news-summary">百度公布文心一言最新数据，用户规模已达2亿，企业级API调用量日均超10亿次。</p>
+            </div>
+            
+            <!-- 电商新闻 -->
+            <div class="news-card">
+                <span class="category-tag tag-business">电商</span>
+                <h3 class="news-title">【淘宝】直播电商GMV突破5万亿</h3>
+                <p class="news-summary">淘宝直播发布年度报告显示，平台直播电商GMV已突破5万亿元。</p>
+            </div>
+            
+            <!-- 文创新闻 -->
+            <div class="news-card">
+                <span class="category-tag tag-culture">文创</span>
+                <h3 class="news-title">【故宫】2025年文创收入破30亿</h3>
+                <p class="news-summary">故宫博物院公布2025年文创收入达30.2亿元，数字藏品成为新的增长引擎。</p>
+            </div>
+            
+            <!-- 文旅新闻 -->
+            <div class="news-card">
+                <span class="category-tag tag-culture">文旅</span>
+                <h3 class="news-title">【文旅部】2025年国内旅游收入达8万亿</h3>
+                <p class="news-summary">文化和旅游部数据显示，2025年国内旅游总收入达8.2万亿元，同比增长15%。</p>
+            </div>
+            
+            <!-- 政策新闻 -->
+            <div class="news-card">
+                <span class="category-tag tag-tech">政策</span>
+                <h3 class="news-title">【国务院】发布AI产业发展指导意见</h3>
