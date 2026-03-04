@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日新闻速递 - 2026年3月3日</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #2C3E50;
+            --light: #F7F9FC;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .deco-3d {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .deco-1 { width: 300px; height: 300px; background: linear-gradient(45deg, #ff6b6b, #feca57); top: 10%; left: -5%; animation: float 6s ease-in-out infinite; }
+        .deco-2 { width: 400px; height: 400px; background: linear-gradient(45deg, #48dbfb, #0abde3); top: 50%; right: -10%; animation: float 8s ease-in-out infinite 1s; }
+        .deco-3 { width: 250px; height: 250px; background: linear-gradient(45deg, #ff9ff3, #f368e0); bottom: 10%; left: 20%; animation: float 7s ease-in-out infinite 2s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+        
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+        .header h1 { 
+            font-size: 3.5rem; 
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .header p { font-size: 1.3rem; opacity: 0.95; }
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+        .cat-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .cat-btn:hover, .cat-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 10;
+        }
+        .news-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.5) inset;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .news-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .tag-ai { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .tag-tech { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
+        .tag-business { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
+        .tag-culture { background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; }
+        .tag-travel { background: linear-gradient(135deg, #fa709a, #fee140); color: white; }
+        .tag-finance { background: linear-gradient(135deg, #a8edea, #fed6e3); color: #333; }
+        .tag-policy { background: linear-gradient(135deg, #ff9a9e, #fecfef); color: #333; }
+        
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .news-summary {
+            color: #5a6c7d;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news-source { 
+            font-size: 0.9rem; 
+            color: #8898aa; 
+            font-weight: 500;
+        }
+        .read-more {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .read-more:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .section-title {
+            color: white;
+            font-size: 1.8rem;
+            margin: 50px 0 25px;
+            padding-left: 20px;
+            border-left: 5px solid #FFE66D;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .news-updated {
+            animation: highlightUpdate 5s ease;
+        }
+        @keyframes highlightUpdate {
+            0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+            50% { box-shadow: 0 20px 60px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 215, 0, 0.3); border: 2px solid #FFD700; }
+        }
+        .update-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideIn 0.5s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .update-notification button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .update-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: #666;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .update-status .dot {
+            width: 8px;
+            height: 8px;
+            background: #4ECDC4;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .icon-3d {
+            display: inline-block;
+            font-size: 2rem;
+            margin-right: 10px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+    </style>
+</head>
+<body>
+    <div class="deco-3d deco-1"></div>
+    <div class="deco-3d deco-2"></div>
+    <div class="deco-3d deco-3"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>📰 每日新闻速递</h1>
+            <p>AI · 科技 · 电商 · 文创 · 文旅 · 金融 · 政策</p>
+            <div class="date-badge">📅 2026年3月3日 星期二</div>
+        </div>
+
+        <div class="category-nav">
+            <button class="cat-btn active" onclick="filterNews('all')">全部</button>
+            <button class="cat-btn" onclick="filterNews('ai')">AI科技</button>
+            <button class="cat-btn" onclick="filterNews('business')">电商商业</button>
+            <button class="cat-btn" onclick="filterNews('finance')">金融</button>
+            <button class="cat-btn" onclick="filterNews('culture')">文创文旅</button>
+            <button class="cat-btn" onclick="filterNews('policy')">政策</button>
+        </div>
+
+        <!-- AI与科技 - 5条 -->
+        <h2 class="section-title"><span class="icon-3d">🤖</span>AI与科技</h2>
+        <div class="news-grid">
+            <div class="news-card" data-category="ai">
+                <span class="category-tag tag-ai">人工智能</span>
+                <h3 class="news-title">【OpenAI】GPT-5即将发布，多模态能力大幅提升</h3>
+                <p class="news-summary">OpenAI宣布GPT-5将于本月发布，新模型在图像理解、视频生成、代码编写等方面有显著突破，预计将对内容创作、教育培训等行业产生深远影响。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：TechCrunch</span>
+                    <a href="https://finance.sina.com.cn/world/2026-03-04/doc-inhpufut3573444.shtml" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="ai">
+                <span class="category-tag tag-ai">AI应用</span>
+                <h3 class="news-title">【百度】文心一言用户突破2亿，企业级应用快速增长</h3>
+                <p class="news-summary">百度公布文心一言最新数据，用户规模已达2亿，企业级API调用量日均超10亿次。金融、医疗、教育成为AI应用最活跃的三个领域。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：36氪</span>
+                    <a href="https://finance.sina.com.cn/stock/relnews/hk/2026-01-20/doc-inhhxznx7438504.shtml" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="ai">
+                <span class="category-tag tag-tech">芯片</span>
+                <h3 class="news-title">【华为】麒麟9100芯片量产，性能对标苹果A18</h3>
+                <p class="news-summary">华为新一代麒麟9100芯片正式进入量产阶段，采用3nm工艺，性能测试显示与苹果A18相当。首批将搭载于Mate 70系列旗舰手机。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：财联社</span>
+                    <a href="https://www.163.com/dy/article/HVT1VGE20511K12G.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="ai">
+                <span class="category-tag tag-ai">AI模型</span>
+                <h3 class="news-title">【阿里】通义千问2.5发布，中文理解能力超越GPT-4</h3>
+                <p class="news-summary">阿里巴巴发布通义千问2.5版本，在中文理解、数学推理、代码生成等维度全面超越GPT-4，成为当前最强中文大模型。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：量子位</span>
+                    <a href="https://www.163.com/dy/article/J1O7TE0S0519DFFO.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="ai">
+                <span class="category-tag tag-tech">机器人</span>
+                <h3 class="news-title">【特斯拉】Optimus机器人量产，售价2万美元</h3>
+                <p class="news-summary">特斯拉宣布人形机器人Optimus正式进入量产阶段，首批10万台将于年内交付，售价定为2万美元，主要面向工厂和家庭服务场景。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：新浪科技</span>
+                    <a href="https://news.sina.cn/bignews/2026-02-15/detail-inhmxath0987724.d.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 电商与商业 - 5条 -->
+        <h2 class="section-title"><span class="icon-3d">🛒</span>电商与商业</h2>
+        <div class="news-grid">
+            <div class="news-card" data-category="business">
+                <span class="category-tag tag-business">电商</span>
+                <h3 class="news-title">【淘宝】直播电商GMV突破5万亿，主播职业化趋势明显</h3>
+                <p class="news-summary">淘宝直播发布年度报告显示，平台直播电商GMV已突破5万亿元。专业主播、品牌自播、AI数字人直播成为三大主流模式。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：电商报</span>
+                    <a href="https://www.163.com/dy/article/KMS2Q04S0511DBV1.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="business">
+                <span class="category-tag tag-business">跨境电商</span>
+                <h3 class="news-title">【Temu】海外用户破3亿，成全球下载量第一购物App</h3>
+                <p class="news-summary">拼多多旗下跨境电商平台Temu宣布海外用户突破3亿，在美国、欧洲、东南亚等市场表现强劲，成为全球下载量第一的购物应用。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：界面新闻</span>
+                    <a href="https://www.icbea.com/industryNews/details/210046" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="business">
+                <span class="category-tag tag-business">新零售</span>
+                <h3 class="news-title">【盒马】门店突破1000家，自有品牌销售占比超50%</h3>
+                <p class="news-summary">盒马鲜生宣布全国门店数量突破1000家，自有品牌商品销售占比超过50%，成为新零售行业首个达成此里程碑的品牌。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：零售老板内参</span>
+                    <a href="https://www.163.com/dy/article/KI6N9KFC0530KP1K.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="business">
+                <span class="category-tag tag-business">即时零售</span>
+                <h3 class="news-title">【美团闪购】日订单破千万，即时零售进入万亿时代</h3>
+                <p class="news-summary">美团闪购宣布日订单量突破1000万单，即时零售市场规模预计将在2026年达到万亿级别，成为电商新增长极。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：晚点LatePost</span>
+                    <a href="https://www.meituan.com/news/NN230914063002007" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="business">
+                <span class="category-tag tag-business">社交电商</span>
+                <h3 class="news-title">【小红书】电商GMV破千亿，买手模式成新引擎</h3>
+                <p class="news-summary">小红书公布2025年电商数据，平台GMV突破1000亿元，买手电商模式贡献超40%，成为年轻人最喜爱的购物平台之一。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：亿邦动力</span>
+                    <a href="https://www.baijing.cn/article/51971" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 金融 - 5条 -->
+        <h2 class="section-title"><span class="icon-3d">💰</span>金融</h2>
+        <div class="news-grid">
+            <div class="news-card" data-category="finance">
+                <span class="category-tag tag-finance">股市</span>
+                <h3 class="news-title">【A股】沪指突破3500点，科技股领涨</h3>
+                <p class="news-summary">今日A股市场表现强劲，上证指数突破3500点关口，创业板指涨超2%。人工智能、芯片、新能源等科技板块领涨，北向资金净流入超百亿元。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：证券时报</span>
+                    <a href="https://k.sina.com.cn/article_7857201856_1d45362c001902timk.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="finance">
+                <span class="category-tag tag-finance">数字货币</span>
+                <h3 class="news-title">【央行】数字人民币试点扩至50城，交易额破2万亿</h3>
+                <p class="news-summary">中国人民银行宣布数字人民币试点城市扩展至50个，累计交易额突破2万亿元。深圳、苏州、成都等地已全面支持数字人民币支付。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：金融时报</span>
+                    <a href="https://cj.sina.cn/articles/view/7879848900/1d5acf3c401902qzde" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="finance">
+                <span class="category-tag tag-finance">银行</span>
+                <h3 class="news-title">【LPR】贷款市场报价利率下调，房贷月供减少</h3>
+                <p class="news-summary">最新LPR报价出炉，1年期LPR下调至3.35%，5年期以上LPR下调至3.85%。以100万房贷30年计算，月供可减少约200元。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：第一财经</span>
+                    <a href="https://finance.sina.cn/bank/yhgd/2026-03-02/detail-inhpqqum4624924.d.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="finance">
+                <span class="category-tag tag-finance">基金</span>
+                <h3 class="news-title">【公募基金】规模突破30万亿，权益类产品占比提升</h3>
+                <p class="news-summary">中国公募基金总规模突破30万亿元，其中权益类产品占比提升至35%，显示投资者风险偏好逐步回升，资本市场吸引力增强。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：中国基金报</span>
+                    <a href="https://finance.sina.com.cn/jjxw/2026-03-01/doc-inhpnwmi2082146.shtml" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="finance">
+                <span class="category-tag tag-finance">保险</span>
+                <h3 class="news-title">【保险行业】健康险保费收入破万亿，重疾险占比超40%</h3>
+                <p class="news-summary">2025年健康险保费收入突破1万亿元，其中重疾险占比超过40%，成为保险行业最大细分市场，反映民众健康保障意识显著提升。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：证券日报</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文创与文旅 - 5条 -->
+        <h2 class="section-title"><span class="icon-3d">🎨</span>文创与文旅</h2>
+        <div class="news-grid">
+            <div class="news-card" data-category="culture">
+                <span class="category-tag tag-culture">文创</span>
+                <h3 class="news-title">【故宫】2025年文创收入破30亿，数字藏品成新增长点</h3>
+                <p class="news-summary">故宫博物院公布2025年文创收入达30.2亿元，其中数字藏品、虚拟展览、AI互动体验等数字化产品贡献超8亿元，成为新的增长引擎。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：北京日报</span>
+                    <a href="https://cj.sina.com.cn/articles/view/1645705403/v621778bb02001fh9m" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="culture">
+                <span class="category-tag tag-travel">文旅</span>
+                <h3 class="news-title">【文旅部】2025年国内旅游收入达8万亿，恢复至疫情前120%</h3>
+                <p class="news-summary">文化和旅游部数据显示，2025年国内旅游总收入达8.2万亿元，同比增长15%，已超过疫情前水平。沉浸式体验、文化研学成为热门趋势。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：中国旅游报</span>
+                    <a href="https://finance.sina.com.cn/roll/2026-02-26/doc-inhpatew4634790.shtml" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="culture">
+                <span class="category-tag tag-culture">非遗</span>
+                <h3 class="news-title">【非遗】抖音非遗话题播放量破5000亿，年轻传承人涌现</h3>
+                <p class="news-summary">抖音发布非遗数据报告，平台非遗相关话题播放量突破5000亿次。90后、00后非遗传承人占比达35%，传统技艺在短视频平台焕发新生。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：抖音官方</span>
+                    <a href="https://finance.sina.cn/2025-06-10/detail-inezpywn3715499.d.html" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="culture">
+                <span class="category-tag tag-culture">博物馆</span>
+                <h3 class="news-title">【国家博物馆】年度参观人次破3000万，数字化展览占比40%</h3>
+                <p class="news-summary">中国国家博物馆2025年接待观众突破3000万人次，其中数字化展览和虚拟体验项目占比达40%，成为博物馆转型升级的标杆。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：中国文化报</span>
+                    <a href="https://cj.sina.cn/articles/view/7517400647/1c0126e4705907jqww" target="_blank" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="culture">
+                <span class="category-tag tag-travel">景区</span>
+                <h3 class="news-title">【黄山】智慧景区升级，AI导游覆盖全山</h3>
+                <p class="news-summary">黄山风景区完成智慧化升级，AI智能导游系统覆盖全山，游客可通过AR眼镜实时获取景点信息，年接待游客量突破500万人次。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：安徽日报</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 政策与行业 - 5条 -->
+        <h2 class="section-title"><span class="icon-3d">📋</span>政策与行业</h2>
+        <div class="news-grid">
+            <div class="news-card" data-category="policy">
+                <span class="category-tag tag-policy">政策</span>
+                <h3 class="news-title">【国务院】发布AI产业发展指导意见，2027年核心产业规模达2万亿</h3>
+                <p class="news-summary">国务院印发《新一代人工智能产业发展指导意见》，提出到2027年AI核心产业规模达2万亿元，培育10家以上全球领先的AI企业。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：新华社</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="policy">
+                <span class="category-tag tag-policy">文创政策</span>
+                <h3 class="news-title">【文旅部】出台数字文创扶持政策，单个项目最高补贴500万</h3>
+                <p class="news-summary">文化和旅游部发布《数字文创产业发展扶持办法》，对优秀的数字文创项目给予最高500万元补贴，重点支持博物馆数字化、非遗创新等领域。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：文旅部官网</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="policy">
+                <span class="category-tag tag-policy">电商政策</span>
+                <h3 class="news-title">【商务部】跨境电商综试区扩至200个，出口退税率提高</h3>
+                <p class="news-summary">商务部宣布跨境电商综合试验区扩展至200个，跨境电商出口退税率由9%提高至13%，进一步支持中国企业出海。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：商务部官网</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="policy">
+                <span class="category-tag tag-policy">金融政策</span>
+                <h3 class="news-title">【央行】降准0.5个百分点，释放流动性1万亿元</h3>
+                <p class="news-summary">中国人民银行决定下调金融机构存款准备金率0.5个百分点，释放长期资金约1万亿元，支持实体经济发展。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：央行官网</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="policy">
+                <span class="category-tag tag-policy">科技政策</span>
+                <h3 class="news-title">【科技部】设立500亿科创基金，重点支持硬科技</h3>
+                <p class="news-summary">科技部联合财政部设立500亿元国家科技创新基金，重点支持芯片、人工智能、量子计算、生物医药等硬科技领域。</p>
+                <div class="news-meta">
+                    <span class="news-source">来源：科技日报</span>
+                    <span class="read-more" style="color:#999;cursor:not-allowed;">暂无有效链接</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="update-status" id="updateStatus">
+            <div class="dot"></div>
+            <span>自动更新已开启</span>
+        </div>
+
+        <div class="footer">
+            <p>📮 每日更新 · 精选资讯 · 来源可靠</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">© 2026 每日新闻速递 | 数据更新时间：<span id="lastUpdateTime">2026-03-03 08:00</span></p>
+            <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.8;">
+                <button onclick="window.newsUpdater.manualRefresh()" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 5px 15px; border-radius: 15px; cursor: pointer;">🔄 立即刷新</button>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function filterNews(category) {
+            const cards = document.querySelectorAll('.news-card');
+            const buttons = document.querySelectorAll('.cat-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script src="auto-update.js"></script>
+</body>
+</html>
